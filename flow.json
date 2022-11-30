@@ -1700,7 +1700,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1160,
+        "x": 1120,
         "y": 1940,
         "wires": [
             [
