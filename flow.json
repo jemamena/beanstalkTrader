@@ -147,8 +147,7 @@
         "order": 1,
         "disp": false,
         "width": "8",
-        "collapse": false,
-        "className": ""
+        "collapse": false
     },
     {
         "id": "9fb486fd2c3c7daf",
@@ -222,7 +221,7 @@
         "topic": "v1/devices/me/rpc/request/+",
         "qos": "0",
         "datatype": "auto-detect",
-        "broker": "9fb486fd2c3c7daf",
+        "broker": "08b6f600530e1c2c",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -790,7 +789,6 @@
         "label": "Trade size",
         "format": "{{msg.payload.params.tradeSize}}",
         "layout": "col-center",
-        "className": "",
         "x": 1190,
         "y": 320,
         "wires": []
@@ -827,9 +825,6 @@
         "mode": "text",
         "delay": 300,
         "topic": "stopLoss",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "str",
         "x": 1200,
         "y": 540,
         "wires": [
@@ -934,9 +929,7 @@
         "x": 1350,
         "y": 1080,
         "wires": [
-            [
-                "6be4b62df67306ce"
-            ]
+            []
         ]
     },
     {
@@ -947,7 +940,7 @@
         "topic": "v1/devices/me/rpc/response/+",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "9fb486fd2c3c7daf",
+        "broker": "08b6f600530e1c2c",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -1272,8 +1265,7 @@
         "z": "5ab672823d632b5b",
         "name": "Reset closetrades timeout ",
         "links": [
-            "9a5bf7dd160745f6",
-            "1f902fb9af43884f"
+            "9a5bf7dd160745f6"
         ],
         "x": 705,
         "y": 1380,
@@ -1432,34 +1424,6 @@
         "y": 1620,
         "wires": [
             [
-                "9dc5ed332482384b"
-            ]
-        ]
-    },
-    {
-        "id": "9dc5ed332482384b",
-        "type": "join",
-        "z": "5ab672823d632b5b",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "2",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 238.75,
-        "y": 1620,
-        "wires": [
-            [
                 "a561fdda80bb2076"
             ]
         ]
@@ -1514,7 +1478,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "9fb486fd2c3c7daf",
+        "broker": "08b6f600530e1c2c",
         "x": 590,
         "y": 1620,
         "wires": []
@@ -1547,34 +1511,6 @@
             "1f902fb9af43884f"
         ],
         "x": 105,
-        "y": 1840,
-        "wires": [
-            [
-                "e17bf27dd761f656"
-            ]
-        ]
-    },
-    {
-        "id": "e17bf27dd761f656",
-        "type": "join",
-        "z": "5ab672823d632b5b",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "2",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 240,
         "y": 1840,
         "wires": [
             [
@@ -1632,7 +1568,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "9fb486fd2c3c7daf",
+        "broker": "08b6f600530e1c2c",
         "x": 630,
         "y": 1840,
         "wires": []
@@ -1665,34 +1601,6 @@
             "49154683332fc80a"
         ],
         "x": 845,
-        "y": 1620,
-        "wires": [
-            [
-                "973f830745d50ca8"
-            ]
-        ]
-    },
-    {
-        "id": "973f830745d50ca8",
-        "type": "join",
-        "z": "5ab672823d632b5b",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "2",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 940,
         "y": 1620,
         "wires": [
             [
@@ -1749,7 +1657,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "9fb486fd2c3c7daf",
+        "broker": "08b6f600530e1c2c",
         "x": 1280,
         "y": 1620,
         "wires": []
@@ -1826,7 +1734,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "9fb486fd2c3c7daf",
+        "broker": "08b6f600530e1c2c",
         "x": 1310,
         "y": 1940,
         "wires": []
@@ -1845,12 +1753,10 @@
         "tooltip": "",
         "color": "",
         "bgcolor": "green",
-        "className": "",
         "icon": "fa-thumbs-up fa-3x",
         "payload": "closed",
         "payloadType": "str",
         "topic": "topic",
-        "topicType": "str",
         "x": 1180,
         "y": 720,
         "wires": [
@@ -2043,7 +1949,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "9fb486fd2c3c7daf",
+        "broker": "08b6f600530e1c2c",
         "x": 510,
         "y": 940,
         "wires": []
@@ -2147,12 +2053,10 @@
         "tooltip": "",
         "color": "",
         "bgcolor": "green",
-        "className": "",
         "icon": "fa-thumbs-up fa-3x",
         "payload": "opened",
         "payloadType": "str",
         "topic": "topic",
-        "topicType": "str",
         "x": 1180,
         "y": 780,
         "wires": [
@@ -2169,8 +2073,7 @@
         "name": "Done OUT",
         "mode": "link",
         "links": [
-            "15e75058ca01d152",
-            "db74e069f8143fec"
+            "15e75058ca01d152"
         ],
         "x": 1285,
         "y": 800,
@@ -2189,6 +2092,84 @@
         "libs": [],
         "x": 1420,
         "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "973f830745d50ca8",
+        "type": "join",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1010,
+        "y": 1500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e17bf27dd761f656",
+        "type": "join",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 230,
+        "y": 1800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9dc5ed332482384b",
+        "type": "join",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 230,
+        "y": 1560,
         "wires": [
             []
         ]
