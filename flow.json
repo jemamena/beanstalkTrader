@@ -34,6 +34,19 @@
         ]
     },
     {
+        "id": "edc1461ea57cc2e0",
+        "type": "junction",
+        "z": "5ab672823d632b5b",
+        "x": 660,
+        "y": 1480,
+        "wires": [
+            [
+                "d2b09690674d219d",
+                "a8a8c0eb026a2af0"
+            ]
+        ]
+    },
+    {
         "id": "0cbdb304210c8469",
         "type": "ui_base",
         "theme": {
@@ -146,7 +159,7 @@
         "tab": "69c2f669240f1763",
         "order": 1,
         "disp": false,
-        "width": "8",
+        "width": 8,
         "collapse": false
     },
     {
@@ -204,16 +217,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "6eb98d999e841c11",
-        "type": "ui_spacer",
-        "z": "5ab672823d632b5b",
-        "name": "spacer",
-        "group": "a5e5760a4c6ba88d",
-        "order": 7,
-        "width": 8,
-        "height": 1
-    },
-    {
         "id": "8ceae58591f7143d",
         "type": "mqtt in",
         "z": "5ab672823d632b5b",
@@ -249,7 +252,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 460,
+        "x": 400,
         "y": 1140,
         "wires": []
     },
@@ -275,11 +278,16 @@
                 "t": "eq",
                 "v": "closeTrades",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "noLuck",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 3,
+        "outputs": 4,
         "x": 490,
         "y": 1020,
         "wires": [
@@ -289,8 +297,9 @@
             [
                 "dd598361c9bd1a82"
             ],
+            [],
             [
-                "191b06cb89a35059"
+                "edc1461ea57cc2e0"
             ]
         ]
     },
@@ -312,8 +321,12 @@
             [
                 "0f0a40f38c4d9347"
             ],
-            [],
-            []
+            [
+                "6e842d48f3d2ba2a"
+            ],
+            [
+                "6e842d48f3d2ba2a"
+            ]
         ]
     },
     {
@@ -340,8 +353,8 @@
         "createDir": false,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 1570,
-        "y": 180,
+        "x": 1670,
+        "y": 100,
         "wires": [
             []
         ]
@@ -357,10 +370,11 @@
             "68cdd525878ed94a",
             "e9b4673771672b69",
             "d705c18781fea72a",
-            "dad83a6346ab14a2"
+            "dad83a6346ab14a2",
+            "5dbd6faccf9c607a"
         ],
-        "x": 1265,
-        "y": 180,
+        "x": 1365,
+        "y": 100,
         "wires": [
             [
                 "2f7d9686f021efa7"
@@ -378,8 +392,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1400,
-        "y": 180,
+        "x": 1500,
+        "y": 100,
         "wires": [
             [
                 "248bec22e8934756",
@@ -395,7 +409,7 @@
         "label": "Leverage Fail Safe",
         "tooltip": "",
         "group": "a5e5760a4c6ba88d",
-        "order": 6,
+        "order": 10,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -438,7 +452,7 @@
         "type": "ui_text",
         "z": "5ab672823d632b5b",
         "group": "a5e5760a4c6ba88d",
-        "order": 5,
+        "order": 9,
         "width": 4,
         "height": 1,
         "name": "",
@@ -446,7 +460,7 @@
         "format": "{{msg.payload.params.leverage}}",
         "layout": "col-center",
         "x": 1200,
-        "y": 360,
+        "y": 280,
         "wires": []
     },
     {
@@ -455,7 +469,7 @@
         "z": "5ab672823d632b5b",
         "name": "DONE",
         "group": "a5e5760a4c6ba88d",
-        "order": 9,
+        "order": 14,
         "width": 4,
         "height": 1,
         "passthru": false,
@@ -489,7 +503,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1620,
-        "y": 500,
+        "y": 460,
         "wires": []
     },
     {
@@ -522,7 +536,7 @@
             "64cad988d97a7890",
             "dabcdd1e7db0a782"
         ],
-        "x": 1525,
+        "x": 1545,
         "y": 580,
         "wires": []
     },
@@ -532,7 +546,7 @@
         "z": "5ab672823d632b5b",
         "name": "",
         "group": "a5e5760a4c6ba88d",
-        "order": 8,
+        "order": 13,
         "width": 4,
         "height": 1,
         "passthru": false,
@@ -634,7 +648,8 @@
         "mode": "link",
         "links": [
             "d04746edd54e31f2",
-            "b45cf2edf31114e2"
+            "b45cf2edf31114e2",
+            "9abc4cbd61b2e2fc"
         ],
         "x": 1295,
         "y": 700,
@@ -646,9 +661,9 @@
         "z": "5ab672823d632b5b",
         "name": "Ready timeout",
         "op1": "",
-        "op2": "false",
+        "op2": "timeout",
         "op1type": "nul",
-        "op2type": "bool",
+        "op2type": "str",
         "duration": "80",
         "extend": false,
         "overrideDelay": false,
@@ -693,7 +708,7 @@
         "z": "5ab672823d632b5b",
         "name": "Done timeout",
         "op1": "",
-        "op2": "error",
+        "op2": "timeout",
         "op1type": "nul",
         "op2type": "str",
         "duration": "10",
@@ -790,7 +805,7 @@
         "format": "{{msg.payload.params.tradeSize}}",
         "layout": "col-center",
         "x": 1190,
-        "y": 320,
+        "y": 240,
         "wires": []
     },
     {
@@ -802,11 +817,13 @@
             "aae1eea1dd13d1ba"
         ],
         "x": 1005,
-        "y": 340,
+        "y": 260,
         "wires": [
             [
                 "e72c25a366934084",
-                "c09078f5ed9b9ead"
+                "c09078f5ed9b9ead",
+                "e73ade4ef838fd3c",
+                "05c6f41fe8152342"
             ]
         ]
     },
@@ -821,15 +838,15 @@
         "order": 2,
         "width": 4,
         "height": 1,
-        "passthru": true,
+        "passthru": false,
         "mode": "text",
         "delay": 300,
-        "topic": "stopLoss",
+        "topic": "p&l",
         "x": 1200,
         "y": 540,
         "wires": [
             [
-                "93baa0abfee23965"
+                "cb8d15cb8b64fe85"
             ]
         ]
     },
@@ -865,8 +882,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1620,
-        "y": 580,
+        "x": 1640,
+        "y": 600,
         "wires": []
     },
     {
@@ -903,7 +920,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1210,
+        "x": 1250,
         "y": 900,
         "wires": [
             []
@@ -971,11 +988,21 @@
                 "t": "eq",
                 "v": "tradeDone",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "closeTradesDone",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "noLuckDone",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 2,
+        "outputs": 4,
         "x": 420,
         "y": 680,
         "wires": [
@@ -984,6 +1011,12 @@
             ],
             [
                 "e4e8d1895d99f6f3"
+            ],
+            [
+                "74ed9baa5a760d05"
+            ],
+            [
+                "337149465195f525"
             ]
         ]
     },
@@ -1067,8 +1100,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1590,
-        "y": 140,
+        "x": 1690,
+        "y": 60,
         "wires": []
     },
     {
@@ -1087,10 +1120,12 @@
         "wires": [
             [
                 "2c47a0815598d9fe",
-                "a77948c793389bcd"
+                "a77948c793389bcd",
+                "93f62b86334a5580"
             ],
             [
-                "67bd5b0d93f7c6f4"
+                "67bd5b0d93f7c6f4",
+                "93f62b86334a5580"
             ]
         ]
     },
@@ -1100,7 +1135,10 @@
         "z": "5ab672823d632b5b",
         "name": "link in 1",
         "links": [
-            "a77948c793389bcd"
+            "a77948c793389bcd",
+            "9a5bf7dd160745f6",
+            "1f902fb9af43884f",
+            "90342d446bdca011"
         ],
         "x": 805,
         "y": 500,
@@ -1134,7 +1172,11 @@
         "wires": [
             [
                 "790035275a01eaaa",
-                "ae76a3f6b08ee034"
+                "ae76a3f6b08ee034",
+                "580f3ae83c5eeb8c",
+                "eb363e4eaca5da3b",
+                "c2c1c1895b1289ae",
+                "c1f6822f355735c5"
             ]
         ]
     },
@@ -1197,15 +1239,15 @@
         "type": "debug",
         "z": "5ab672823d632b5b",
         "name": "debug 59",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 560,
-        "y": 800,
+        "x": 540,
+        "y": 820,
         "wires": []
     },
     {
@@ -1218,7 +1260,7 @@
         "op1type": "pay",
         "op2type": "payl",
         "duration": "10",
-        "extend": false,
+        "extend": true,
         "overrideDelay": false,
         "units": "s",
         "reset": "",
@@ -1240,18 +1282,18 @@
         "z": "5ab672823d632b5b",
         "name": "tradeClose timeout",
         "op1": "",
-        "op2": "error",
+        "op2": "timeout",
         "op1type": "nul",
         "op2type": "str",
-        "duration": "10",
+        "duration": "20",
         "extend": false,
-        "overrideDelay": false,
+        "overrideDelay": true,
         "units": "s",
-        "reset": "done",
+        "reset": "closed",
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 890,
+        "x": 990,
         "y": 1380,
         "wires": [
             [
@@ -1265,9 +1307,10 @@
         "z": "5ab672823d632b5b",
         "name": "Reset closetrades timeout ",
         "links": [
-            "9a5bf7dd160745f6"
+            "9a5bf7dd160745f6",
+            "9e7229dcfc59d96d"
         ],
-        "x": 705,
+        "x": 805,
         "y": 1380,
         "wires": [
             [
@@ -1284,7 +1327,7 @@
         "links": [
             "3a75c70408bfc4f2"
         ],
-        "x": 1075,
+        "x": 1175,
         "y": 1380,
         "wires": []
     },
@@ -1300,16 +1343,13 @@
         "winHide": false,
         "oldrc": false,
         "name": "closeTrades",
-        "x": 890,
+        "x": 990,
         "y": 1300,
         "wires": [
             [
-                "dbc2d951577349fc",
-                "99381dcec4f70797"
+                "dbc2d951577349fc"
             ],
-            [
-                "99381dcec4f70797"
-            ],
+            [],
             []
         ]
     },
@@ -1327,48 +1367,6 @@
         "x": 1005,
         "y": 860,
         "wires": []
-    },
-    {
-        "id": "3d873cf2d1901010",
-        "type": "function",
-        "z": "5ab672823d632b5b",
-        "name": "Response",
-        "func": "var PrepRequestId=msg.topic.split('/')[5];\n\nglobal.set('PrepRequestId', PrepRequestId);\nglobal.set('prepParams',msg.payload);\n// msg.topic = \"v1/devices/me/rpc/response/\" + PrepRequestId;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 380,
-        "y": 1286.25,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7129511c2dea618a",
-        "type": "change",
-        "z": "5ab672823d632b5b",
-        "name": "execute",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "Trade arrived to execute",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 380,
-        "y": 1320,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "a77948c793389bcd",
@@ -1420,8 +1418,8 @@
             "09aef469e908ad27",
             "5d74476c999e2d2a"
         ],
-        "x": 108.75,
-        "y": 1620,
+        "x": 105,
+        "y": 1740,
         "wires": [
             [
                 "a561fdda80bb2076"
@@ -1433,14 +1431,14 @@
         "type": "function",
         "z": "5ab672823d632b5b",
         "name": "tradeReady",
-        "func": "var entries = global.get('entries') || {};\nvar requestId = global.get('requestId') || 0;\n\nvar tradeSize = 400;\nvar leverage = 400;\n\nmsg.payload={};\nmsg.payload.method=\"tradeReady\";\nmsg.payload.params={};\nmsg.payload.params.tradeSize = entries.tradeSize;\n// msg.payload.params.leverage = entries.leverage;\n// msg.payload.params.stopLoss = entries.stopLoss;\nmsg.payload.params.takeProfit = entries.takeProfit;\n// msg.payload.params.limit = entries.limit;\nmsg.payload.params.total = entries.total;\nmsg.payload.params.ready = true;\nrequestId++;\n\nglobal.set('requestId',requestId);\n\nmsg.topic = \"v1/devices/me/rpc/request/\"+requestId;\nreturn msg;",
+        "func": "var entries = global.get('entries') || {};\nvar requestId = global.get('requestId') || 0;\n\nvar input = msg.payload;\n\nmsg.payload={};\nmsg.payload.method=\"tradeReady\";\nmsg.payload.params={};\nif (input !=\"timeout\"){\n    msg.payload.params.tradeSize = entries.tradeSize;\n    msg.payload.params.leverage = entries.leverage;\n    msg.payload.params.total = entries.total;\n    msg.payload.params.plTotal = entries.plTotal;\n    msg.payload.params.ready = true;\n    msg.payload.params.timeout = false;\n}else {\n    msg.payload.params.ready = false;\n    msg.payload.params.timeout=true;\n}\n\n\nrequestId++;\n\nglobal.set('requestId',requestId);\n\nmsg.topic = \"v1/devices/me/rpc/request/\"+requestId;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 418.75,
-        "y": 1620,
+        "x": 415,
+        "y": 1740,
         "wires": [
             [
                 "7e994382f75126ea",
@@ -1457,8 +1455,8 @@
         "links": [
             "601cde10f9d81185"
         ],
-        "x": 258.75,
-        "y": 1680,
+        "x": 255,
+        "y": 1800,
         "wires": [
             [
                 "a561fdda80bb2076"
@@ -1479,8 +1477,8 @@
         "correl": "",
         "expiry": "",
         "broker": "08b6f600530e1c2c",
-        "x": 590,
-        "y": 1620,
+        "x": 586.25,
+        "y": 1740,
         "wires": []
     },
     {
@@ -1496,8 +1494,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 618.75,
-        "y": 1680,
+        "x": 615,
+        "y": 1800,
         "wires": []
     },
     {
@@ -1507,11 +1505,10 @@
         "name": "closeTradesDone",
         "links": [
             "9a5bf7dd160745f6",
-            "c6522d6c1de92dbe",
-            "1f902fb9af43884f"
+            "c6522d6c1de92dbe"
         ],
-        "x": 105,
-        "y": 1840,
+        "x": 101.25,
+        "y": 1960,
         "wires": [
             [
                 "1b9c854da8e261a3"
@@ -1523,19 +1520,23 @@
         "type": "function",
         "z": "5ab672823d632b5b",
         "name": "closeTradesDone",
-        "func": "var entries = global.get('entries') || {};\nvar requestId = global.get('requestId') || 0;\n\nmsg.payload={};\nmsg.payload.method=\"closeTradesDone\";\nmsg.payload.params={};\n\nrequestId++;\n\nglobal.set('requestId',requestId);\n\nmsg.topic = \"v1/devices/me/rpc/request/\"+requestId;\nreturn msg;",
-        "outputs": 1,
+        "func": "var entries = global.get('entries') || {};\nvar requestId = global.get('requestId') || 0;\n\nvar input=msg.payload;\n\nmsg.payload={};\nmsg.payload.method=\"closeTradesDone\";\nmsg.payload.params = {};\nif (input!=\"timeout\"){\n    if (entries.closedTrades != \"fail\") {\n        if (entries.noLuck == \"check\") {\n            msg.payload.params.noLuckCheck = false;\n            entries.noLuck = \"ok\";\n        }\n        else msg.payload.params.noLuckCheck=true;\n        msg.payload.params.closed = true;\n        \n    }\n    else {\n        entries.excessTrades=entries.excessTrades+1; \n        msg.payload=\"closed\";\n        global.set('entries', entries);\n        return [null, msg];\n    }\n    // else msg.payload.params.closed = false;\n\n    msg.payload.params.timeout = false;\n    msg.payload.params.excessTrades = entries.excessTrades;\n}\nelse {\n    msg.payload.params.closed = false;\n    msg.payload.params.timeout = true;\n    msg.payload.params.excessTrades = entries.excessTrades;\n}\n\n\nrequestId++;\n// entries.closedTrades=\"ready\";\nglobal.set('requestId', requestId);\nglobal.set('entries', entries);\n\nmsg.topic = \"v1/devices/me/rpc/request/\"+requestId;\nreturn msg;",
+        "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 1840,
+        "x": 416.25,
+        "y": 1960,
         "wires": [
             [
                 "2d1c79ce58c37a06",
-                "a0f8dd9ac1d90c22",
-                "c0fadaee0db9f610"
+                "c0fadaee0db9f610",
+                "b1b673d161e4868b"
+            ],
+            [
+                "e2cdcd02011de9bc",
+                "9e7229dcfc59d96d"
             ]
         ]
     },
@@ -1547,8 +1548,8 @@
         "links": [
             "ddabcef3c3dd9b26"
         ],
-        "x": 295,
-        "y": 1900,
+        "x": 291.25,
+        "y": 2020,
         "wires": [
             [
                 "1b9c854da8e261a3"
@@ -1569,25 +1570,8 @@
         "correl": "",
         "expiry": "",
         "broker": "08b6f600530e1c2c",
-        "x": 630,
-        "y": 1840,
-        "wires": []
-    },
-    {
-        "id": "a0f8dd9ac1d90c22",
-        "type": "debug",
-        "z": "5ab672823d632b5b",
-        "name": "tradeReady",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 1940,
+        "x": 690,
+        "y": 1980,
         "wires": []
     },
     {
@@ -1600,8 +1584,8 @@
             "6be4b62df67306ce",
             "49154683332fc80a"
         ],
-        "x": 845,
-        "y": 1620,
+        "x": 1065,
+        "y": 1720,
         "wires": [
             [
                 "3952ffa4a4a3f194"
@@ -1613,14 +1597,14 @@
         "type": "function",
         "z": "5ab672823d632b5b",
         "name": "tradeDone",
-        "func": "var done=(msg.payload==\"done\")?true:false;\nvar requestId = global.get('requestId') || 0;\n\n\nmsg.payload={};\nmsg.payload.method=\"tradeDone\";\nmsg.payload.params={};\nmsg.payload.params.done = done;\nrequestId++;\n\nglobal.set('requestId', requestId);\nmsg.topic = \"v1/devices/me/rpc/request/\"+requestId;\nreturn msg;",
+        "func": "var requestId = global.get('requestId') || 0;\n\nvar input=msg.payload;\n\n\nmsg.payload={};\nmsg.payload.method=\"tradeDone\";\nmsg.payload.params={};\nif (input!= \"timeout\") {\n    msg.payload.params.done = true;\n    msg.payload.params.timeout = false;\n}\nelse{\n    msg.payload.params.done = false;\n    msg.payload.params.timeout = true; \n}\nrequestId++;\n\nglobal.set('requestId', requestId);\nmsg.topic = \"v1/devices/me/rpc/request/\"+requestId;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1100,
-        "y": 1620,
+        "x": 1250,
+        "y": 1720,
         "wires": [
             [
                 "73c6bb9ac09d65bb",
@@ -1636,8 +1620,8 @@
         "links": [
             "67bd5b0d93f7c6f4"
         ],
-        "x": 985,
-        "y": 1680,
+        "x": 1135,
+        "y": 1780,
         "wires": [
             [
                 "3952ffa4a4a3f194"
@@ -1658,8 +1642,8 @@
         "correl": "",
         "expiry": "",
         "broker": "08b6f600530e1c2c",
-        "x": 1280,
-        "y": 1620,
+        "x": 1430,
+        "y": 1720,
         "wires": []
     },
     {
@@ -1681,8 +1665,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1280,
-        "y": 1680,
+        "x": 1430,
+        "y": 1780,
         "wires": [
             [
                 "68cdd525878ed94a"
@@ -1700,8 +1684,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1120,
-        "y": 1940,
+        "x": 260,
+        "y": 2260,
         "wires": [
             [
                 "49a1cc7bc65d82fd"
@@ -1717,8 +1701,8 @@
         "links": [
             "64cad988d97a7890"
         ],
-        "x": 1395,
-        "y": 1680,
+        "x": 1545,
+        "y": 1780,
         "wires": []
     },
     {
@@ -1735,8 +1719,8 @@
         "correl": "",
         "expiry": "",
         "broker": "08b6f600530e1c2c",
-        "x": 1310,
-        "y": 1940,
+        "x": 450,
+        "y": 2260,
         "wires": []
     },
     {
@@ -1745,7 +1729,7 @@
         "z": "5ab672823d632b5b",
         "name": "CLOSED",
         "group": "a5e5760a4c6ba88d",
-        "order": 11,
+        "order": 16,
         "width": 4,
         "height": 1,
         "passthru": false,
@@ -1762,7 +1746,8 @@
         "wires": [
             [
                 "9a5bf7dd160745f6",
-                "131bedaa6ef42953"
+                "131bedaa6ef42953",
+                "3aad54bca0f728d0"
             ]
         ]
     },
@@ -1774,7 +1759,8 @@
         "mode": "link",
         "links": [
             "15e75058ca01d152",
-            "db74e069f8143fec"
+            "db74e069f8143fec",
+            "9abc4cbd61b2e2fc"
         ],
         "x": 1285,
         "y": 740,
@@ -1797,12 +1783,10 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1090,
+        "x": 1190,
         "y": 1300,
         "wires": [
-            [
-                "c6522d6c1de92dbe"
-            ]
+            []
         ]
     },
     {
@@ -1814,7 +1798,7 @@
         "links": [
             "15e75058ca01d152"
         ],
-        "x": 1215,
+        "x": 1315,
         "y": 1300,
         "wires": []
     },
@@ -1875,8 +1859,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 610,
-        "y": 1580,
+        "x": 606.25,
+        "y": 1700,
         "wires": [
             [
                 "e9b4673771672b69"
@@ -1892,8 +1876,8 @@
         "links": [
             "64cad988d97a7890"
         ],
-        "x": 725,
-        "y": 1580,
+        "x": 721.25,
+        "y": 1700,
         "wires": []
     },
     {
@@ -1915,8 +1899,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 670,
-        "y": 1800,
+        "x": 666.25,
+        "y": 1920,
         "wires": [
             [
                 "d705c18781fea72a"
@@ -1932,8 +1916,8 @@
         "links": [
             "64cad988d97a7890"
         ],
-        "x": 835,
-        "y": 1800,
+        "x": 831.25,
+        "y": 1920,
         "wires": []
     },
     {
@@ -1975,7 +1959,7 @@
         "topic": "",
         "payload": "-c 3",
         "payloadType": "str",
-        "x": 710,
+        "x": 810,
         "y": 1260,
         "wires": [
             [
@@ -1988,20 +1972,19 @@
         "type": "function",
         "z": "5ab672823d632b5b",
         "name": "Trade",
-        "func": "// if (msg.payload.params.check==true){\nmsg.payload = \"-c \"+msg.payload.params.nTrades;\nreturn [msg,null];\n// }else{\n//     msg.payload=\"failed\";\n//     return [null,msg];\n// }",
-        "outputs": 2,
+        "func": "var entries=global.get('entries')||{};\n\nvar nTrades=msg.payload.params.nTrades;\n\nmsg.payload = \"-c \"+nTrades;\nmsg.delay = (30 + parseInt(nTrades)*3)*1000;\nentries.excessTrades = 0;\nentries.closedTrades=\"ON\";\nglobal.set('entries', entries);\nreturn msg;\n",
+        "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 690,
+        "x": 790,
         "y": 1300,
         "wires": [
             [
-                "5bd2109885ff0733"
-            ],
-            [
-                "e5f258fd9d59ce24"
+                "5bd2109885ff0733",
+                "e5f258fd9d59ce24",
+                "ad9efae8b3c50215"
             ]
         ]
     },
@@ -2024,28 +2007,12 @@
         "wires": []
     },
     {
-        "id": "99381dcec4f70797",
-        "type": "debug",
-        "z": "5ab672823d632b5b",
-        "name": "debug 60",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1120,
-        "y": 1260,
-        "wires": []
-    },
-    {
         "id": "8d220a29a97458ac",
         "type": "ui_button",
         "z": "5ab672823d632b5b",
         "name": "OPENED",
         "group": "a5e5760a4c6ba88d",
-        "order": 10,
+        "order": 15,
         "width": 4,
         "height": 1,
         "passthru": false,
@@ -2062,7 +2029,8 @@
         "wires": [
             [
                 "1f902fb9af43884f",
-                "9f2e3dbd1a17bc53"
+                "9f2e3dbd1a17bc53",
+                "b4c9069572da1ef7"
             ]
         ]
     },
@@ -2073,18 +2041,20 @@
         "name": "Done OUT",
         "mode": "link",
         "links": [
-            "15e75058ca01d152"
+            "d462b9febab60de6",
+            "b4465f65b3ef2234",
+            "9abc4cbd61b2e2fc"
         ],
-        "x": 1285,
-        "y": 800,
+        "x": 1295,
+        "y": 820,
         "wires": []
     },
     {
         "id": "9f2e3dbd1a17bc53",
         "type": "function",
         "z": "5ab672823d632b5b",
-        "name": "Closed",
-        "func": "var ready=msg.payload;\n\nvar entries=global.get('entries') || {};\n\n\nentries.done = true;\nglobal.set('entries', entries)\n\nmsg.payload = \"trades Closed button pressed\";\n\nreturn msg;",
+        "name": "opened",
+        "func": "var ready=msg.payload;\n\nvar entries=global.get('entries') || {};\n\n\nentries.done = true;\nglobal.set('entries', entries)\n\nmsg.payload = \"trades opened button pressed\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2093,85 +2063,935 @@
         "x": 1420,
         "y": 780,
         "wires": [
+            [
+                "99b80242b4165746"
+            ]
+        ]
+    },
+    {
+        "id": "93f62b86334a5580",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "debug 61",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "580f3ae83c5eeb8c",
+        "type": "ui_text_input",
+        "z": "5ab672823d632b5b",
+        "d": true,
+        "name": "",
+        "label": "Close Trades Fail Safe",
+        "tooltip": "",
+        "group": "a5e5760a4c6ba88d",
+        "order": 17,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "closedTrades",
+        "x": 1160,
+        "y": 340,
+        "wires": [
+            [
+                "d25a94e1be6c3423"
+            ]
+        ]
+    },
+    {
+        "id": "74ed9baa5a760d05",
+        "type": "change",
+        "z": "5ab672823d632b5b",
+        "name": "closeTrades",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Closing all trades",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 740,
+        "wires": [
+            [
+                "ef357324e5c2c475"
+            ]
+        ]
+    },
+    {
+        "id": "d462b9febab60de6",
+        "type": "link in",
+        "z": "5ab672823d632b5b",
+        "name": "noLuckDone",
+        "links": [
+            "1f902fb9af43884f",
+            "74d3362485db5025",
+            "47cd4498f440c7da"
+        ],
+        "x": 1035,
+        "y": 1940,
+        "wires": [
+            [
+                "fef8b1d98c4a4f63"
+            ]
+        ]
+    },
+    {
+        "id": "fef8b1d98c4a4f63",
+        "type": "function",
+        "z": "5ab672823d632b5b",
+        "name": "noLuckDone",
+        "func": "var entries = global.get('entries') || {};\nvar requestId = global.get('requestId') || 0;\n\nvar input=msg.payload;\n\nmsg.payload={};\nmsg.payload.method=\"noLuckDone\";\nmsg.payload.params = {};\nif (input!=\"timeout\"){\n    if (input==\"closedTrades\")msg.payload.params.closedTrades==true;\n\n    msg.payload.params.plTotal = entries.plTotal;\n    msg.payload.params.timeout=false;\n}\nelse {\n    msg.payload.params.plTotal = false;\n    msg.payload.params.timeout = true;\n}\n\n\nrequestId++;\n\nglobal.set('requestId',requestId);\n\nmsg.topic = \"v1/devices/me/rpc/request/\"+requestId;\nif (msg.payload.params.plTotal!=undefined) return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 1940,
+        "wires": [
+            [
+                "05f8b5ca25134a29",
+                "459817688f226b92",
+                "966532c657e8ba5a"
+            ]
+        ]
+    },
+    {
+        "id": "ee605e83ef6b8684",
+        "type": "link in",
+        "z": "5ab672823d632b5b",
+        "name": "closeTrades timeout IN",
+        "links": [
+            "0a35b29bb12ed687"
+        ],
+        "x": 1155,
+        "y": 2000,
+        "wires": [
+            [
+                "fef8b1d98c4a4f63"
+            ]
+        ]
+    },
+    {
+        "id": "05f8b5ca25134a29",
+        "type": "mqtt out",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "08b6f600530e1c2c",
+        "x": 1490,
+        "y": 1940,
+        "wires": []
+    },
+    {
+        "id": "459817688f226b92",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "tradeReady",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1470,
+        "y": 2040,
+        "wires": []
+    },
+    {
+        "id": "966532c657e8ba5a",
+        "type": "change",
+        "z": "5ab672823d632b5b",
+        "name": "noLuck done",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "PL total ready to send",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1510,
+        "y": 1900,
+        "wires": [
+            [
+                "5dbd6faccf9c607a"
+            ]
+        ]
+    },
+    {
+        "id": "5dbd6faccf9c607a",
+        "type": "link out",
+        "z": "5ab672823d632b5b",
+        "name": "tradeDone OUT",
+        "mode": "link",
+        "links": [
+            "64cad988d97a7890"
+        ],
+        "x": 1695,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "a8a8c0eb026a2af0",
+        "type": "trigger",
+        "z": "5ab672823d632b5b",
+        "name": "openTrades timeout",
+        "op1": "",
+        "op2": "timeout",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "20",
+        "extend": false,
+        "overrideDelay": true,
+        "units": "s",
+        "reset": "opened",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 980,
+        "y": 1540,
+        "wires": [
+            [
+                "0a35b29bb12ed687",
+                "6e5473da1f801293"
+            ]
+        ]
+    },
+    {
+        "id": "b4465f65b3ef2234",
+        "type": "link in",
+        "z": "5ab672823d632b5b",
+        "name": "Reset noLuck timeout ",
+        "links": [
+            "1f902fb9af43884f",
+            "f1f926ced4c1a8d4"
+        ],
+        "x": 745,
+        "y": 1540,
+        "wires": [
+            [
+                "a8a8c0eb026a2af0"
+            ]
+        ]
+    },
+    {
+        "id": "0a35b29bb12ed687",
+        "type": "link out",
+        "z": "5ab672823d632b5b",
+        "name": "Done OUT",
+        "mode": "link",
+        "links": [
+            "ee605e83ef6b8684"
+        ],
+        "x": 1155,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "d2b09690674d219d",
+        "type": "exec",
+        "z": "5ab672823d632b5b",
+        "command": "py C:\\Pscripts\\noLuckPnLGrab.py",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "noLuck",
+        "x": 960,
+        "y": 1480,
+        "wires": [
+            [
+                "8b20167f839798c3",
+                "02bc7dc83c50ec7f"
+            ],
+            [
+                "02bc7dc83c50ec7f"
+            ],
             []
         ]
     },
     {
-        "id": "973f830745d50ca8",
-        "type": "join",
+        "id": "8b20167f839798c3",
+        "type": "switch",
         "z": "5ab672823d632b5b",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
+        "name": "opened",
         "property": "payload",
         "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "2",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 1010,
+        "rules": [
+            {
+                "t": "eq",
+                "v": "opened",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1180,
+        "y": 1480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "74d3362485db5025",
+        "type": "link out",
+        "z": "5ab672823d632b5b",
+        "name": "Done OUT",
+        "mode": "link",
+        "links": [
+            "d462b9febab60de6"
+        ],
+        "x": 1295,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "02bc7dc83c50ec7f",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "debug 62",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "337149465195f525",
+        "type": "change",
+        "z": "5ab672823d632b5b",
+        "name": "noLuckDone",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "no luck received",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 780,
+        "wires": [
+            [
+                "ef357324e5c2c475"
+            ]
+        ]
+    },
+    {
+        "id": "6e842d48f3d2ba2a",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "debug 63",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1440,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "cb8d15cb8b64fe85",
+        "type": "function",
+        "z": "5ab672823d632b5b",
+        "name": "Total",
+        "func": "var entries = global.get('entries') || {};\n\nvar plTotal=0;\nif (!msg.payload.startsWith(\"All\")) {\n    plTotal = msg.payload.split(' ')[0];\n    entries.plTotal = parseFloat(plTotal);\n\n    msg.payload = entries.plTotal;\n    global.set('entries',entries);\n    return msg;\n}\nelse {\n    // entries.noLuck=\"excess\";\n    // msg.payload=\"opened\";\n    // global.set('entries', entries);\n    // return [null,msg];\n}\n\n// var msg1 = {};\n// var date = new Date().toUTCString();\n// msg1.payload = date + \": capital=\" + capital + \", tradesize=\" + tradeSize + \", take profit:\" + msg1.payload + \" - \" + trade;\n// return [msg, msg1];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1410,
+        "y": 540,
+        "wires": [
+            [
+                "99b80242b4165746",
+                "b254af07bf770dc6"
+            ]
+        ]
+    },
+    {
+        "id": "b254af07bf770dc6",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "debug 64",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1620,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "9fc944633a54a89e",
+        "type": "function",
+        "z": "5ab672823d632b5b",
+        "name": "closeTrades fail safe",
+        "func": "var entries = global.get('entries') || {};\n\nvar method=entries.method;\n\n// if (method==\"noLuck\" || method==\"tradePrep\"){\n//     if (msg.payload.startsWith(\"Reports\") || msg.payload ==\"\"){\n//         msg.payload=0;\n//     }\n//     else entries[msg.topic] = msg.payload;\n// }\n// else if (method==\"closeTrades\"){\n    // if (msg.payload == \"Total P&L\" || msg.payload == \"\") entries.closedTrades = \"fail\";\nif (msg.payload.startsWith(\"Reports\")) entries.closedTrades=\"ok\";\nelse entries.closedTrades = \"fail\";\n\n// }\nglobal.set('entries', entries)\n\nmsg.payload = msg.topic + \" Fail Safe: \" + msg.payload +\" closedTrades=\"+entries.closedTrades;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1580,
+        "y": 420,
+        "wires": [
+            [
+                "83a1f7926b8178c9"
+            ]
+        ]
+    },
+    {
+        "id": "83a1f7926b8178c9",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "debug 65",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1800,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3aad54bca0f728d0",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "debug 69",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1700,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "2923963179af44a7",
+        "type": "change",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "entries.closeTrades",
+                "pt": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 2180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "decb1af1de3db9fa",
+        "type": "inject",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 900,
+        "y": 2180,
+        "wires": [
+            [
+                "2923963179af44a7"
+            ]
+        ]
+    },
+    {
+        "id": "3bd3136850adda4a",
+        "type": "inject",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 700,
+        "y": 2180,
+        "wires": [
+            [
+                "67f5cf5860cb9d78"
+            ]
+        ]
+    },
+    {
+        "id": "67f5cf5860cb9d78",
+        "type": "exec",
+        "z": "5ab672823d632b5b",
+        "command": "py C:\\Pscripts\\keepClosingExcessTrades.py",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Excess",
+        "x": 880,
+        "y": 2120,
+        "wires": [
+            [
+                "2a0b5bcfab0dfc1e"
+            ],
+            [
+                "2a0b5bcfab0dfc1e"
+            ],
+            [
+                "2a0b5bcfab0dfc1e"
+            ]
+        ]
+    },
+    {
+        "id": "b4c9069572da1ef7",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "debug 70",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1480,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "ad9efae8b3c50215",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "debug 71",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "b1b673d161e4868b",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "tradeReady",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 1960,
+        "wires": []
+    },
+    {
+        "id": "b8d4f367d353f288",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "debug 72",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6e5473da1f801293",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "debug 73",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "e2cdcd02011de9bc",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "tradeReady",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 2060,
+        "wires": []
+    },
+    {
+        "id": "9e7229dcfc59d96d",
+        "type": "link out",
+        "z": "5ab672823d632b5b",
+        "name": "closeTrades excess",
+        "mode": "link",
+        "links": [
+            "db74e069f8143fec"
+        ],
+        "x": 725,
+        "y": 2060,
+        "wires": []
+    },
+    {
+        "id": "2a0b5bcfab0dfc1e",
+        "type": "debug",
+        "z": "5ab672823d632b5b",
+        "name": "tradeReady",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 2140,
+        "wires": []
+    },
+    {
+        "id": "79e5038c67f462e7",
+        "type": "delay",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 700,
+        "y": 2120,
+        "wires": [
+            [
+                "67f5cf5860cb9d78"
+            ]
+        ]
+    },
+    {
+        "id": "e103615be0c9a7b2",
+        "type": "config",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "properties": [
+            {
+                "p": "entries",
+                "pt": "global",
+                "to": "{}",
+                "tot": "json"
+            }
+        ],
+        "active": false,
+        "x": 410,
         "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "19d19bea41e64651",
+        "type": "link in",
+        "z": "5ab672823d632b5b",
+        "name": "trades excess IN",
+        "links": [
+            "f1f926ced4c1a8d4",
+            "8e4465eeeb26a11d"
+        ],
+        "x": 575,
+        "y": 2120,
         "wires": [
             []
         ]
     },
     {
-        "id": "e17bf27dd761f656",
-        "type": "join",
+        "id": "d25a94e1be6c3423",
+        "type": "trigger",
         "z": "5ab672823d632b5b",
         "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "2",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 230,
-        "y": 1800,
+        "op1": "",
+        "op2": "",
+        "op1type": "pay",
+        "op2type": "nul",
+        "duration": "1",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1360,
+        "y": 340,
         "wires": [
+            [
+                "9fc944633a54a89e",
+                "b8d4f367d353f288"
+            ]
+        ]
+    },
+    {
+        "id": "c2c1c1895b1289ae",
+        "type": "ui_text_input",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "label": "Stop Loss Fail Safe",
+        "tooltip": "",
+        "group": "a5e5760a4c6ba88d",
+        "order": 8,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "stopLoss",
+        "x": 1170,
+        "y": 420,
+        "wires": [
+            [
+                "93baa0abfee23965"
+            ]
+        ]
+    },
+    {
+        "id": "c1f6822f355735c5",
+        "type": "ui_text_input",
+        "z": "5ab672823d632b5b",
+        "name": "",
+        "label": "Take Profit Fail Safe",
+        "tooltip": "",
+        "group": "a5e5760a4c6ba88d",
+        "order": 6,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "takeProfit",
+        "x": 1160,
+        "y": 380,
+        "wires": [
+            [
+                "93baa0abfee23965"
+            ]
+        ]
+    },
+    {
+        "id": "e73ade4ef838fd3c",
+        "type": "ui_text",
+        "z": "5ab672823d632b5b",
+        "group": "a5e5760a4c6ba88d",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Take Profit",
+        "format": "{{msg.payload.params.takeProfit}}",
+        "layout": "col-center",
+        "x": 1190,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "05c6f41fe8152342",
+        "type": "ui_text",
+        "z": "5ab672823d632b5b",
+        "group": "a5e5760a4c6ba88d",
+        "order": 7,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Stop Loss",
+        "format": "{{msg.payload.params.stopLoss}}",
+        "layout": "col-center",
+        "x": 1180,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "4716178f748d5497",
+        "type": "switch",
+        "z": "5ab672823d632b5b",
+        "name": "open Trades?",
+        "property": "payload.params.openTrades",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 360,
+        "y": 1380,
+        "wires": [
+            [],
             []
         ]
     },
     {
-        "id": "9dc5ed332482384b",
-        "type": "join",
+        "id": "8e4465eeeb26a11d",
+        "type": "link out",
         "z": "5ab672823d632b5b",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "2",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 230,
-        "y": 1560,
+        "name": "no luck no opentrades",
+        "mode": "link",
+        "links": [
+            "19d19bea41e64651"
+        ],
+        "x": 465,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "fdf4b82408700886",
+        "type": "change",
+        "z": "5ab672823d632b5b",
+        "name": "no Luck ckeck",
+        "rules": [
+            {
+                "t": "set",
+                "p": "entries.noLuck",
+                "pt": "global",
+                "to": "check",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 1420,
         "wires": [
-            []
+            [
+                "8e4465eeeb26a11d"
+            ]
         ]
     }
 ]
